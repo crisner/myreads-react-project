@@ -10,7 +10,9 @@ class Booklist extends Component {
                 <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Bookshelf />
+                    <Bookshelf className="bookshelf" title="Currently Reading"></Bookshelf>
+                    <Bookshelf className="bookshelf" title="Want to Read"></Bookshelf>
+                    <Bookshelf className="bookshelf" title="Read"></Bookshelf>
                 </div>
                 <Addbook />
 
