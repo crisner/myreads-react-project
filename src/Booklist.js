@@ -36,9 +36,9 @@ class Booklist extends Component {
                 <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Bookshelf books={this.state.reading} className="bookshelf" title="Currently Reading"></Bookshelf>
-                    <Bookshelf books={this.state.read} className="bookshelf" title="Read"></Bookshelf>
-                    <Bookshelf books={this.state.wantToRead} className="bookshelf" title="Want to Read"></Bookshelf>
+                    <Bookshelf books={this.state.reading} className="bookshelf" title="Currently Reading" />
+                    <Bookshelf books={this.state.read} className="bookshelf" title="Read" />
+                    <Bookshelf books={this.state.wantToRead} className="bookshelf" title="Want to Read" />
                 </div>
                 <Addbook />
 
