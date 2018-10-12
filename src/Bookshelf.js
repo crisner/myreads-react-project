@@ -2,14 +2,6 @@ import React, { Component } from 'react';
 import Book from './Book';
 
 class Bookshelf extends Component {
-    constructor () {
-        super();
-        this.state = {
-            read: [],
-            reading: [],
-            wantToRead: []
-        }
-    }
     render () {
         return (
             <div>
