@@ -49,9 +49,12 @@ class Booklist extends Component {
          * Remove selected book from current array(filter it out)
          * if selected value is read, push the selected book to the relevant array
          */
-        // if(event.target.value)
-        let shelfName = event.target.id.replace(' ', '').toLowerCase();
+        let shelfName = event.target.id.replace(/\s/g, '').toLowerCase();
         let selectedOption = event.target.value.toLowerCase();
+        if(selectedOption === shelfName) {
+            return;
+        }
+        console.log(this.state[selectedOption]);
         console.log(shelfName, selectedOption);
     }
 
