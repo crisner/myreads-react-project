@@ -44,6 +44,17 @@ class Booklist extends Component {
         }
     }
 
+    bookShelfChangeHandler = (event) => {
+        /*
+         * Remove selected book from current array(filter it out)
+         * if selected value is read, push the selected book to the relevant array
+         */
+        // if(event.target.value)
+        let shelfName = event.target.id.replace(' ', '').toLowerCase();
+        let selectedOption = event.target.value.toLowerCase();
+        console.log(shelfName, selectedOption);
+    }
+
     render () {
         return (
             <div className="list-books">
@@ -51,9 +62,9 @@ class Booklist extends Component {
                 <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Bookshelf books={this.state.reading} className="bookshelf" title="Currently Reading" />
-                    <Bookshelf books={this.state.read} className="bookshelf" title="Read" />
-                    <Bookshelf books={this.state.wantToRead} className="bookshelf" title="Want to Read" />
+                    <Bookshelf onShelfChange={this.bookShelfChangeHandler} books={this.state.reading} className="bookshelf" title="Currently Reading" />
+                    <Bookshelf onShelfChange={this.bookShelfChangeHandler} books={this.state.read} className="bookshelf" title="Read" />
+                    <Bookshelf onShelfChange={this.bookShelfChangeHandler} books={this.state.wantToRead} className="bookshelf" title="Want to Read" />
                 </div>
                 <Addbook />
 
