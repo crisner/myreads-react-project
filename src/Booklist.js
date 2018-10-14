@@ -3,20 +3,6 @@ import Bookshelf from './Bookshelf';
 import Addbook from './Addbook';
 
 class Booklist extends Component {
-    bookShelfChangeHandler = (event) => {
-        /*
-         * Remove selected book from current array(filter it out)
-         * if selected value is read, push the selected book to the relevant array
-         */
-        let shelfName = event.target.id.replace(/\s/g, '').toLowerCase();
-        let selectedOption = event.target.value.toLowerCase();
-        if(selectedOption === shelfName) {
-            return;
-        }
-        console.log(this.state[selectedOption]);
-        console.log(shelfName, selectedOption);
-    }
-
     render () {
         return (
             <div className="list-books">
