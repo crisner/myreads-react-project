@@ -4,6 +4,7 @@ import Addbook from './Addbook';
 
 class Booklist extends Component {
     render () {
+        // console.log(this.props);
         return (
             <div className="list-books">
                 <div className="list-books-title">
@@ -12,18 +13,15 @@ class Booklist extends Component {
                 <div className="list-books-content">
                     <Bookshelf
                     onShelfChange={() => this.props.onShelfChange}
-                    books={this.props.books.currentlyReading}
-                    className="bookshelf"
+                    books={this.props.books}
                     title="Currently Reading" />
                     <Bookshelf
                     onShelfChange={() => this.props.onShelfChange}
-                    books={this.props.books.read}
-                    className="bookshelf"
+                    books={this.props.books}
                     title="Read" />
                     <Bookshelf
                     onShelfChange={() => this.props.onShelfChange}
-                    books={this.props.books.wantToRead}
-                    className="bookshelf"
+                    books={this.props.books}
                     title="Want to Read" />
                 </div>
                 <Addbook />
