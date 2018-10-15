@@ -3,17 +3,18 @@ import Book from './Book';
 
 class Bookshelf extends Component {
     render () {
-        console.log(this.props);
+        // console.log(this.props);
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{this.props.title}</h2>
                 <div className="bookshelf-books">
                     <ol className="books-grid">
-                    {this.props.books.map(book => {
+                    {this.props.books.map((book, index) => {
                         return (
                             book.shelf.toLowerCase() === this.props.title.replace(/\s/g, '').toLowerCase() ? (
                             <li key={book.id}>
                                 <Book
+                                index={index}
                                 view="shelf"
                                 shelf={book.shelf}
                                 onShelfChange={() => this.props.onShelfChange}

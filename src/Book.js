@@ -9,6 +9,7 @@ function Book (props) {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${ props.url })` }}></div>
                     { props.view === 'shelf' ? (
                             <BookshelfChanger
+                            index={props.index}
                             shelf={props.shelf}
                             onShelfChange={() => props.onShelfChange}
                             />
