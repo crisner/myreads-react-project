@@ -1,5 +1,5 @@
-import React from 'react'
-// import * as BooksAPI from './BooksAPI'
+import React from 'react';
+import * as BooksAPI from './BooksAPI';
 import Searchbooks from './Searchbooks';
 import Booklist from './Booklist';
 import './App.css'
@@ -11,6 +11,13 @@ class BooksApp extends React.Component {
     currentlyReading: [],
     wantToRead: [],
     showSearchPage: true
+  }
+
+  componentDidMount() {
+    BooksAPI.getAll().then((books) => {
+      this.setState({ books });
+      console.log(this.state.books);
+    });
   }
 
   bookShelfChangeHandler = (event) => {
