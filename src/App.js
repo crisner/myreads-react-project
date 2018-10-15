@@ -10,7 +10,7 @@ class BooksApp extends React.Component {
     read: [],
     currentlyReading: [],
     wantToRead: [],
-    showSearchPage: true
+    showSearchPage: false
   }
 
   componentDidMount() {
@@ -38,9 +38,10 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Searchbooks />
+          <Searchbooks books={this.state.books} />
         ) : (
-          <Booklist books={this.state.books} onShelfChange={this.bookShelfChangeHandler} />
+          <Booklist books={this.state.books}
+          onShelfChange={this.bookShelfChangeHandler} />
         )}
       </div>
     )
