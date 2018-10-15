@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Book from './Book';
 
 class Searchbooks extends Component {
     render () {
@@ -20,7 +21,21 @@ class Searchbooks extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+              {
+                this.props.books.map(book => {
+                  return (
+                  <li key={book.id}>
+                    <Book
+                    view="search"
+                    title={book.title}
+                    authors={book.authors}
+                    url={book.imageLinks.thumbnail} />
+                  </li>
+                  );
+                })
+              }
+              </ol>
             </div>
             </div>
         );
