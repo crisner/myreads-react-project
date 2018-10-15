@@ -19,16 +19,20 @@ class BooksApp extends React.Component {
 
   bookShelfChangeHandler = (event) => {
     /*
-     * Remove selected book from current array(filter it out)
-     * if selected value is read, push the selected book to the relevant array
+     * Move book from one shelf to the selected shelf
      */
-    let shelfName = event.target.id.replace(/\s/g, '').toLowerCase();
-    let selectedOption = event.target.value.toLowerCase();
-    if(selectedOption === shelfName) {
-        return;
-    }
-    // console.log(this.state[selectedOption]);
-    console.log(shelfName, selectedOption);
+    let selectedIndex = Number(event.target.id);
+    let selectedOption = event.target.value;
+    console.log(this.state.books[selectedIndex].shelf);
+    this.setState((state) => ({
+      books: state.books.map((book, index) => {
+        if (index === selectedIndex) {
+          book.shelf = selectedOption;
+          BooksAPI.update(book, selectedOption);
+        }
+        return book;
+      })
+    }));
   }
 
   render() {
