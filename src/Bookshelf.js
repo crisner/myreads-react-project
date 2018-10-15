@@ -11,15 +11,17 @@ class Bookshelf extends Component {
                     <ol className="books-grid">
                     {this.props.books.map(book => {
                         return (
-                            <li key={book.title}>
+                            book.shelf.toLowerCase() === this.props.title.replace(/\s/g, '').toLowerCase() ? (
+                            <li key={book.id}>
                                 <Book
                                 view="shelf"
-                                shelf={this.props.title}
+                                shelf={book.shelf}
                                 onShelfChange={() => this.props.onShelfChange}
                                 title={book.title}
                                 authors={book.authors}
-                                url={book.url} />
+                                url={book.imageLinks.thumbnail} />
                             </li>
+                            ) : (null)
                         );
                     })}
                     </ol>
