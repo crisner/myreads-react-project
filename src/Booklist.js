@@ -10,12 +10,23 @@ class Booklist extends Component {
                 <h1>MyReads</h1>
                 </div>
                 <div className="list-books-content">
-                    <Bookshelf onShelfChange={() => this.props.onShelfChange} books={this.props.books.currentlyReading} className="bookshelf" title="Currently Reading" />
-                    <Bookshelf onShelfChange={() => this.props.onShelfChange} books={this.props.books.read} className="bookshelf" title="Read" />
-                    <Bookshelf onShelfChange={() => this.props.onShelfChange} books={this.props.books.wantToRead} className="bookshelf" title="Want to Read" />
+                    <Bookshelf
+                    onShelfChange={() => this.props.onShelfChange}
+                    books={this.props.books.currentlyReading}
+                    className="bookshelf"
+                    title="Currently Reading" />
+                    <Bookshelf
+                    onShelfChange={() => this.props.onShelfChange}
+                    books={this.props.books.read}
+                    className="bookshelf"
+                    title="Read" />
+                    <Bookshelf
+                    onShelfChange={() => this.props.onShelfChange}
+                    books={this.props.books.wantToRead}
+                    className="bookshelf"
+                    title="Want to Read" />
                 </div>
                 <Addbook />
-
             </div>
         );
     }
