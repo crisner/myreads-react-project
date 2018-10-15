@@ -7,9 +7,6 @@ import './App.css'
 class BooksApp extends React.Component {
   state = {
     books: [],
-    read: [],
-    currentlyReading: [],
-    wantToRead: [],
     showSearchPage: false
   }
 
