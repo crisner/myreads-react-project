@@ -13,6 +13,7 @@ class Bookshelf extends Component {
                         return (
                             <li key={book.title}>
                                 <Book
+                                view="shelf"
                                 shelf={this.props.title}
                                 onShelfChange={() => this.props.onShelfChange}
                                 title={book.title}
