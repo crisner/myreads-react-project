@@ -43,9 +43,10 @@ class BooksApp extends React.Component {
   }
 
   addToList = (event) => {
-    // console.log(event.target.id);
+    // console.log(event.target.getAttribute('data-bookid'));
+    let bookid= event.target.getAttribute('data-bookid');
     // console.log('props: ' + this.props.state);
-    BooksAPI.get(event.target.id).then((book) => {
+    BooksAPI.get(bookid).then((book) => {
 
       BooksAPI.update(book, 'wantToRead').then(() => {
         this.setState((prev) => ({
