@@ -6,9 +6,11 @@ function BookshelfChanger (props) {
         <div className="book-shelf-changer">
             <select
             value={props.shelf}
-            id={props.index}
+            id={props.id}
+            // id={props.index}
             className={props.shelf}
-            onChange={(e) => props.onShelfChange()()()(e)}>
+            onChange={(e) => props.onShelfChange()()()(e)}
+            onClick={(e) => props.addBook()()(e)}>
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
