@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Searchbooks from './Searchbooks';
 import Booklist from './Booklist';
@@ -44,14 +45,16 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route path="/search" render={() => (
           <Searchbooks books={this.state.books}
           query={this.state.query}
           updateQuery={(query) => this.updateQuery(query)} />
-        ) : (
+        )} />
+
+        <Route exact path="/" render={() => (
           <Booklist books={this.state.books}
           onShelfChange={this.bookShelfChangeHandler} />
-        )}
+        )} />
       </div>
     )
   }
