@@ -1,45 +1,65 @@
 import React, { Component } from 'react';
+import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 
+console.log(this.props);
 class Searchbooks extends Component {
-    render () {
-        return (
-            <div className="search-books">
-            <div className="search-books-bar">
-              <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
-              <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
+  state={
+    books: [] // search results
+  }
 
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author"/>
+  componentDidUpdate(prev) {
+    if(this.props.query !== prev.query && this.props.query !== '') {
+      BooksAPI.search(this.props.query).then((books) => {
 
-              </div>
-            </div>
-            <div className="search-books-results">
-              <ol className="books-grid">
-              {
-                this.props.books.map(book => {
-                  return (
-                  <li key={book.id}>
-                    <Book
-                    view="search"
-                    title={book.title}
-                    authors={book.authors}
-                    url={book.imageLinks.thumbnail} />
-                  </li>
-                  );
-                })
-              }
-              </ol>
-            </div>
-            </div>
-        );
+        this.setState({ books });
+
+        if ((books !== undefined && books.hasOwnProperty('error'))) {
+          this.setState({ books: [] });
+        }
+
+        if ( books !== undefined) {
+          console.log(books.hasOwnProperty('error'));
+        }
+        console.log(this.props.query);
+        console.log(this.state.books);
+      });
     }
+
+  }
+
+  render () {
+    return (
+        <div className="search-books">
+        <div className="search-books-bar">
+          <a className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</a>
+          <div className="search-books-input-wrapper">
+            <input type="text" placeholder="Search by title or author" onChange={(e) => this.props.updateQuery(e.target.value)} />
+          </div>
+        </div>
+        <div className="search-books-results">
+          <ol className="books-grid">
+          {
+            this.state.books && Array.isArray(this.state.books) ? (
+            this.state.books.map(book => {
+              return (
+              <li key={book.id}>
+                <Book
+                view="search"
+                title={book.title}
+                authors={book.authors}
+                url={book.imageLinks ? book.imageLinks.thumbnail : null}
+                />
+              </li>
+              );
+            })
+            ) : (null)
+          }
+          </ol>
+        </div>
+        </div>
+    );
+  }
 }
 
 export default Searchbooks;
