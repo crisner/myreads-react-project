@@ -6,8 +6,9 @@ import './App.css'
 
 class BooksApp extends React.Component {
   state = {
+    query: '',
     books: [],
-    showSearchPage: false
+    showSearchPage: true
   }
 
   componentDidMount() {
@@ -35,11 +36,18 @@ class BooksApp extends React.Component {
     }));
   }
 
+  updateQuery = (query) => {
+    this.setState({ query: query.trim() });
+    console.log(query);
+  }
+
   render() {
     return (
       <div className="app">
         {this.state.showSearchPage ? (
-          <Searchbooks books={this.state.books} />
+          <Searchbooks books={this.state.books}
+          query={this.state.query}
+          updateQuery={(query) => this.updateQuery(query)} />
         ) : (
           <Booklist books={this.state.books}
           onShelfChange={this.bookShelfChangeHandler} />
