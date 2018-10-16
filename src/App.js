@@ -42,13 +42,28 @@ class BooksApp extends React.Component {
     console.log(query);
   }
 
+  addToList = (event) => {
+    // console.log(event.target.id);
+    // console.log('props: ' + this.props.state);
+    BooksAPI.get(event.target.id).then((book) => {
+
+      BooksAPI.update(book, 'wantToRead').then(() => {
+        this.setState((prev) => ({
+          books: prev.books
+        }));
+      });
+        // console.log(book);
+    });
+  }
+
   render() {
     return (
       <div className="app">
         <Route path="/search" render={() => (
           <Searchbooks books={this.state.books}
           query={this.state.query}
-          updateQuery={(query) => this.updateQuery(query)} />
+          updateQuery={(query) => this.updateQuery(query)}
+          addBook={this.addToList} />
         )} />
 
         <Route exact path="/" render={() => (
