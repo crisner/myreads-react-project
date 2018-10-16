@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 
-console.log(this.props);
+// console.log(this.props);
 class Searchbooks extends Component {
   state={
     books: [] // search results
@@ -47,6 +47,8 @@ class Searchbooks extends Component {
               <li key={book.id}>
                 <Book
                 view="search"
+                id={book.id}
+                addBook={() => this.props.addBook}
                 title={book.title}
                 authors={book.authors}
                 url={book.imageLinks ? book.imageLinks.thumbnail : null}
