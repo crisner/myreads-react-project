@@ -43,17 +43,18 @@ class BooksApp extends React.Component {
   }
 
   addToList = (event) => {
-    // console.log(event.target.getAttribute('data-bookid'));
-    let bookid= event.target.getAttribute('data-bookid');
-    // console.log('props: ' + this.props.state);
+    let bookid = event.target.getAttribute('data-bookid');
+    let bookList = this.state.books;
     BooksAPI.get(bookid).then((book) => {
-
-      BooksAPI.update(book, 'wantToRead').then(() => {
-        this.setState((prev) => ({
-          books: prev.books
-        }));
-      });
-        // console.log(book);
+      book.shelf = 'wantToRead';
+      bookList.push(book);
+      this.setState(() => ({
+        books: bookList.map(b => {
+          return b;
+        })
+      }))
+      BooksAPI.update(book, 'wantToRead');
+        console.log(book);
     });
   }
 
