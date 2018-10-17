@@ -1,7 +1,8 @@
 
 const api = "https://reactnd-books-api.udacity.com"
-
-
+const AbortController = window.AbortController;
+const controller = new AbortController();
+const signal = controller.signal;
 // Generate a unique token for storing your bookshelf data on the backend server.
 let token = localStorage.token
 if (!token)
@@ -35,6 +36,7 @@ export const update = (book, shelf) =>
 export const search = (query) =>
   fetch(`${api}/search`, {
     method: 'POST',
+    signal: signal,
     headers: {
       ...headers,
       'Content-Type': 'application/json'
@@ -42,3 +44,8 @@ export const search = (query) =>
     body: JSON.stringify({ query })
   }).then(res => res.json())
     .then(data => data.books)
+
+export const abort = () => {
+      // Abort.
+      controller.abort()
+  }
