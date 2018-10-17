@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom';
 import * as BooksAPI from './BooksAPI';
 import Book from './Book';
 
-// console.log(this.props);
 class Searchbooks extends Component {
   state={
     books: [] // search results
@@ -12,21 +11,12 @@ class Searchbooks extends Component {
   componentDidUpdate(prev) {
     if(this.props.query !== prev.query && this.props.query !== '') {
       BooksAPI.search(this.props.query).then((books) => {
-
         this.setState({ books });
-
         if ((books !== undefined && books.hasOwnProperty('error'))) {
           this.setState({ books: [] });
         }
-
-        if ( books !== undefined) {
-          console.log(books.hasOwnProperty('error'));
-        }
-        console.log(this.props.query);
-        console.log(this.state.books);
       });
     }
-
   }
 
   componentWillUnmount() {

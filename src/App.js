@@ -15,7 +15,6 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
-      console.log(this.state.books);
     });
   }
 
@@ -25,7 +24,6 @@ class BooksApp extends React.Component {
      */
     let selectedIndex = Number(event.target.id);
     let selectedOption = event.target.value;
-    console.log(this.state.books[selectedIndex].shelf);
     this.setState((state) => ({
       books: state.books.map((book, index) => {
         if (index === selectedIndex) {
@@ -39,7 +37,6 @@ class BooksApp extends React.Component {
 
   updateQuery = (query) => {
     this.setState({ query: query.trim() });
-    console.log(query);
   }
 
   addToList = (event) => {
