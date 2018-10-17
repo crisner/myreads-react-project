@@ -29,6 +29,10 @@ class Searchbooks extends Component {
 
   }
 
+  componentWillUnmount() {
+    BooksAPI.abort();
+  }
+
   render () {
     return (
         <div className="search-books">
