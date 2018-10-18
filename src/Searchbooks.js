@@ -9,31 +9,36 @@ class Searchbooks extends Component {
   }
 
   componentDidUpdate(prev) {
-    if(this.props.query !== prev.query && this.props.query !== '') {
-      BooksAPI.search(this.props.query).then((books) => {
-        this.setState({ books });
-        this.setState(() => ({
-          books: books.map(book => {
-            book.shelf = 'none';
-            this.props.books.map(shelvedBook => {
-              if (shelvedBook.id === book.id) {
-                book.shelf = shelvedBook.shelf;
-              }
+    let query = this.props.query;
+    if (query !== prev.query && query === '') {
+      this.setState({ books: [] });
+      return;
+    }
+    if(query !== prev.query) {
+      BooksAPI.search(query).then((books) => {
+        if (Array.isArray(books)) {
+          this.setState(() => ({
+            books: books.map(book => {
+              book.shelf = 'none';
+              this.props.books.map(shelvedBook => {
+                if (shelvedBook.id === book.id) {
+                  book.shelf = shelvedBook.shelf;
+                }
+                return book;
+              })
               return book;
             })
-            return book;
-          })
-        }));
+          }))
+        }
         if ((books !== undefined && books.hasOwnProperty('error'))) {
           this.setState({ books: [] });
         }
       });
     }
-    console.log(this.state.books);
   }
 
   componentWillUnmount() {
-    BooksAPI.abort();
+    // BooksAPI.abort();
   }
 
   render () {
