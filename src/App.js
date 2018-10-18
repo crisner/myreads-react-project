@@ -45,9 +45,21 @@ class BooksApp extends React.Component {
     let bookList = this.state.books;
     BooksAPI.get(bookid).then((book) => {
       book.shelf = shelf;
-      bookList.push(book);
+      bookList.map(shelvedBook => {
+        let counter = 0; // Check against bookList length
+        if (book.id !== shelvedBook.id) {
+          counter++;
+        }
+        if (counter === bookList.length) {
+          bookList.push(book);
+        }
+        return book;
+      });
       this.setState(() => ({
         books: bookList.map(b => {
+          if (b.id === book.id) {
+            b.shelf = shelf; // Update shelf
+          }
           return b;
         })
       }))
