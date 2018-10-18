@@ -53,7 +53,7 @@ class Searchbooks extends Component {
         <div className="search-books-results">
           <ol className="books-grid">
           {
-            this.state.books && Array.isArray(this.state.books) ? (
+            this.state.books ? (
             this.state.books.map(book => {
               return (
               <li key={book.id}>
