@@ -11,12 +11,19 @@ class Searchbooks extends Component {
   componentDidUpdate(prev) {
     if(this.props.query !== prev.query && this.props.query !== '') {
       BooksAPI.search(this.props.query).then((books) => {
-        this.setState({ books });
+        // this.setState({ books });
+        this.setState(() => ({
+          books: books.map((book => {
+            book.shelf = 'none';
+            return book;
+          }))
+        }));
         if ((books !== undefined && books.hasOwnProperty('error'))) {
           this.setState({ books: [] });
         }
       });
     }
+    console.log(this.state.books);
   }
 
   componentWillUnmount() {
@@ -42,6 +49,7 @@ class Searchbooks extends Component {
                 <Book
                 view="search"
                 id={book.id}
+                shelf={book.shelf}
                 addBook={() => this.props.addBook}
                 title={book.title}
                 authors={book.authors}

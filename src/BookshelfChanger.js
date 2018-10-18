@@ -8,7 +8,7 @@ function BookshelfChanger (props) {
     return (
         <div className="book-shelf-changer">
             <select
-            value={props.shelf || 'none'}
+            value={props.shelf}
             data-bookid={props.id}
             id={props.index}
             className={props.shelf}
