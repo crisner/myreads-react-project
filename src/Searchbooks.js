@@ -37,9 +37,9 @@ class Searchbooks extends Component {
     }
   }
 
-  componentWillUnmount() {
-    // BooksAPI.abort();
-  }
+  // componentWillUnmount() {
+  //   // BooksAPI.abort();
+  // }
 
   render () {
     return (
