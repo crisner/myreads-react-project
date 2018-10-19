@@ -10,7 +10,6 @@ class BooksApp extends React.Component {
     query: '',
     books: [],
     results: []
-    // showSearchPage: true
   }
 
   componentDidMount() {
