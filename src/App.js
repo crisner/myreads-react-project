@@ -9,13 +9,43 @@ class BooksApp extends React.Component {
   state = {
     query: '',
     books: [],
-    showSearchPage: true
+    results: []
+    // showSearchPage: true
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
+  }
+
+  componentDidUpdate(prev) {
+    let query = this.state.query;
+    if (query !== prev.query && query === '') {
+      query = ' ';
+    }
+    if(query !== prev.query) {
+      BooksAPI.search(query).then((results) => {
+        // console.log(results);
+        if (Array.isArray(results)) {
+          this.setState(() => ({
+            results: results.map(book => {
+              book.shelf = 'none';
+              this.state.books.map(shelvedBook => {
+                if (shelvedBook.id === book.id) {
+                  book.shelf = shelvedBook.shelf;
+                }
+                return book;
+              })
+              return book;
+            })
+          }))
+        }
+        if ((results !== undefined && results.hasOwnProperty('error'))) {
+          this.setState({ results: [] });
+        }
+      });
+    }
   }
 
   bookShelfChangeHandler = (event) => {
@@ -71,8 +101,7 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route path="/search" render={() => (
-          <Searchbooks books={this.state.books}
-          query={this.state.query}
+          <Searchbooks books={this.state.results}
           updateQuery={(query) => this.updateQuery(query)}
           addBook={this.addToList} />
         )} />
