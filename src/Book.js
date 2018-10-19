@@ -2,7 +2,6 @@ import React from 'react';
 import BookshelfChanger from './BookshelfChanger';
 
 function Book (props) {
-        // console.log(props);
         return (
                 <div className="book">
                 <div className="book-top">

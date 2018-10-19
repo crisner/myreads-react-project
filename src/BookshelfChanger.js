@@ -1,7 +1,6 @@
 import React from 'react';
 
 function BookshelfChanger (props) {
-    // console.log(props);
     let path = document.location.pathname;
     let shelfChange = props.onShelfChange;
     let addToShelf = props.addBook;
