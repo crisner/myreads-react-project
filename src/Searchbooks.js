@@ -4,6 +4,10 @@ import Book from './Book';
 
 class Searchbooks extends Component {
 
+  componentWillUnmount() {
+    this.props.updateQuery('');
+  }
+
   render () {
     return (
         <div className="search-books">
