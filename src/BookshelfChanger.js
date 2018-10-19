@@ -11,7 +11,7 @@ function BookshelfChanger (props) {
             data-bookid={props.id}
             id={props.index}
             className={props.shelf}
-            onChange={(e) => path === '/' ? shelfChange()()()(e) : addToShelf()()(e)}
+            onChange={(e) => path === '/' ? shelfChange()()()(e) : addToShelf()()(e)} // Choose function to run depending on the page
             >
                 <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>

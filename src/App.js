@@ -13,6 +13,9 @@ class BooksApp extends React.Component {
     results: []
   }
 
+  /*
+   * Debounce function
+   */
   debounceEvent(...args) {
     this.debounceEvent = debounce(...args);
     return e => {
@@ -22,15 +25,21 @@ class BooksApp extends React.Component {
   };
 
   componentDidMount() {
+    /*
+     * Get all books in the shelves
+     */
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
     });
   }
 
   componentDidUpdate(prev) {
+    /*
+     * Implement debouncer on search calls
+     */
     this.debounceEvent(() => {
       let query = this.state.query;
-      if (query !== prev.query && query === '') {
+      if (query !== prev.query && query === '') { // Prevent error from api call caused by empty search query
         query = ' ';
       }
       if(query !== prev.query) {
@@ -49,7 +58,7 @@ class BooksApp extends React.Component {
               })
             }))
           }
-          if ((results !== undefined && results.hasOwnProperty('error'))) {
+          if ((results !== undefined && results.hasOwnProperty('error'))) { // Check for errors
             this.setState({ results: [] });
           }
         })
@@ -90,7 +99,7 @@ class BooksApp extends React.Component {
           counter++;
         }
         if (counter === bookList.length) {
-          bookList.push(book);
+          bookList.push(book); // Add book if not already present in any of the shelves
         }
         return book;
       });
