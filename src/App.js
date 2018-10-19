@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
+import { debounce } from 'lodash';
 import * as BooksAPI from './BooksAPI';
 import Searchbooks from './Searchbooks';
 import Booklist from './Booklist';
@@ -12,6 +13,14 @@ class BooksApp extends React.Component {
     results: []
   }
 
+  debounceEvent(...args) {
+    this.debounceEvent = debounce(...args);
+    return e => {
+      e.persist();
+      return this.debounceEvent(e);
+    }
+  };
+
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books });
@@ -19,32 +28,33 @@ class BooksApp extends React.Component {
   }
 
   componentDidUpdate(prev) {
-    let query = this.state.query;
-    if (query !== prev.query && query === '') {
-      query = ' ';
-    }
-    if(query !== prev.query) {
-      BooksAPI.search(query).then((results) => {
-        // console.log(results);
-        if (Array.isArray(results)) {
-          this.setState(() => ({
-            results: results.map(book => {
-              book.shelf = 'none';
-              this.state.books.map(shelvedBook => {
-                if (shelvedBook.id === book.id) {
-                  book.shelf = shelvedBook.shelf;
-                }
+    this.debounceEvent(() => {
+      let query = this.state.query;
+      if (query !== prev.query && query === '') {
+        query = ' ';
+      }
+      if(query !== prev.query) {
+        BooksAPI.search(query).then((results) => {
+          if (Array.isArray(results)) {
+            this.setState(() => ({
+              results: results.map(book => {
+                book.shelf = 'none';
+                this.state.books.map(shelvedBook => {
+                  if (shelvedBook.id === book.id) {
+                    book.shelf = shelvedBook.shelf;
+                  }
+                  return book;
+                })
                 return book;
               })
-              return book;
-            })
-          }))
-        }
-        if ((results !== undefined && results.hasOwnProperty('error'))) {
-          this.setState({ results: [] });
-        }
-      });
-    }
+            }))
+          }
+          if ((results !== undefined && results.hasOwnProperty('error'))) {
+            this.setState({ results: [] });
+          }
+        })
+      };
+    }, 1000)
   }
 
   bookShelfChangeHandler = (event) => {
