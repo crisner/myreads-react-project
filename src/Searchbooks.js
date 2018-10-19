@@ -54,7 +54,6 @@ class Searchbooks extends Component {
               return (
               <li key={book.id}>
                 <Book
-                view="search"
                 id={book.id}
                 shelf={book.shelf}
                 addBook={() => this.props.addBook}
