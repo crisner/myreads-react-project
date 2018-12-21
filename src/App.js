@@ -93,13 +93,15 @@ class BooksApp extends React.Component {
     let bookList = this.state.books;
     BooksAPI.get(bookid).then((book) => {
       book.shelf = shelf;
+      let counter = 0; // Check against bookList length
       bookList.map(shelvedBook => {
-        let counter = 0; // Check against bookList length
         if (book.id !== shelvedBook.id) {
           counter++;
         }
         if (counter === bookList.length) {
-          bookList.push(book); // Add book if not already present in any of the shelves
+          this.setState(() => ({ // Add book if not already present in any of the shelves
+            books: this.state.books.push(book)
+          }))
         }
         return book;
       });
