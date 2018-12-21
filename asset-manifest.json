@@ -1,7 +1,7 @@
 {
   "main.css": "/myreads-react-project/static/css/main.378f434b.chunk.css",
-  "main.js": "/myreads-react-project/static/js/main.f33b3c0c.chunk.js",
-  "main.js.map": "/myreads-react-project/static/js/main.f33b3c0c.chunk.js.map",
+  "main.js": "/myreads-react-project/static/js/main.c0af55e7.chunk.js",
+  "main.js.map": "/myreads-react-project/static/js/main.c0af55e7.chunk.js.map",
   "static/js/1.f462c235.chunk.js": "/myreads-react-project/static/js/1.f462c235.chunk.js",
   "static/js/1.f462c235.chunk.js.map": "/myreads-react-project/static/js/1.f462c235.chunk.js.map",
   "runtime~main.js": "/myreads-react-project/static/js/runtime~main.ab45ea1a.js",
@@ -9,6 +9,6 @@
   "static/css/main.378f434b.chunk.css.map": "/myreads-react-project/static/css/main.378f434b.chunk.css.map",
   "static/media/App.css": "/myreads-react-project/static/media/arrow-back.20e8847d.svg",
   "index.html": "/myreads-react-project/index.html",
-  "precache-manifest.b3f87c8946cf26e17fbb10d0e2a9a469.js": "/myreads-react-project/precache-manifest.b3f87c8946cf26e17fbb10d0e2a9a469.js",
+  "precache-manifest.e63156de80180c71bdb022a80b670de5.js": "/myreads-react-project/precache-manifest.e63156de80180c71bdb022a80b670de5.js",
   "service-worker.js": "/myreads-react-project/service-worker.js"
 }
