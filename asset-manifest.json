@@ -1,9 +1,14 @@
 {
-  "main.css": "static/css/main.6671fcb0.css",
-  "main.css.map": "static/css/main.6671fcb0.css.map",
-  "main.js": "static/js/main.510ebe52.js",
-  "main.js.map": "static/js/main.510ebe52.js.map",
-  "static\\media\\add.svg": "static/media/add.75d390e5.svg",
-  "static\\media\\arrow-back.svg": "static/media/arrow-back.20e8847d.svg",
-  "static\\media\\arrow-drop-down.svg": "static/media/arrow-drop-down.9d4e3f36.svg"
+  "main.css": "/myreads-react-project/static/css/main.378f434b.chunk.css",
+  "main.js": "/myreads-react-project/static/js/main.eb0ef1c1.chunk.js",
+  "main.js.map": "/myreads-react-project/static/js/main.eb0ef1c1.chunk.js.map",
+  "static/js/1.f462c235.chunk.js": "/myreads-react-project/static/js/1.f462c235.chunk.js",
+  "static/js/1.f462c235.chunk.js.map": "/myreads-react-project/static/js/1.f462c235.chunk.js.map",
+  "runtime~main.js": "/myreads-react-project/static/js/runtime~main.ab45ea1a.js",
+  "runtime~main.js.map": "/myreads-react-project/static/js/runtime~main.ab45ea1a.js.map",
+  "static/css/main.378f434b.chunk.css.map": "/myreads-react-project/static/css/main.378f434b.chunk.css.map",
+  "static/media/App.css": "/myreads-react-project/static/media/add.75d390e5.svg",
+  "index.html": "/myreads-react-project/index.html",
+  "precache-manifest.858282c3ec73058217d253c125995857.js": "/myreads-react-project/precache-manifest.858282c3ec73058217d253c125995857.js",
+  "service-worker.js": "/myreads-react-project/service-worker.js"
 }
